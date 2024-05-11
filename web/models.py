@@ -12,3 +12,4 @@ class Items(db.Model):
         self.description = description
         self.price = price
 
+
