@@ -14,8 +14,10 @@
     <ul>
         {% for item in cart_items  %}
             <li>
-                {{ item[0] }}: {{ item[1] }}
-                
+                {{ item[1] }}: {{ item[2] }}
+                <form action="{{ url_for('decrase_quantity_of_item_in_cart', item_id=item[0]) }}" method="post" style="display: inline;">
+                    <button type="submit"><i class="fa-solid fa-minus"></i></button>
+                </form>
             </li>
         {% endfor %}
     </ul>

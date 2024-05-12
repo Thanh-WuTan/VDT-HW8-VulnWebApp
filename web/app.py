@@ -35,3 +35,6 @@ def item_description(item_id):
 def cart():
     return cart_page(request, db)
 
+@app.route('/decrease_quantity/<item_id>', methods=['POST'])
+def decrase_quantity_of_item_in_cart(item_id):
+    return decrease_quantity(item_id, request, db)
