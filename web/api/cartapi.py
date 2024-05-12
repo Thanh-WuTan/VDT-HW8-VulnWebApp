@@ -1,8 +1,6 @@
-from flask import render_template
-from ..models import Items
+from flask import render_template, make_response, redirect, url_for
 from sqlalchemy import text
 from flask import session 
-from flask_session import Session
 
 
 def cart_page(request, db):

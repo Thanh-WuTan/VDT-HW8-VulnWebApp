@@ -8,7 +8,6 @@ from .api.cartapi import *
 
 app = create_app()
 
-
 @app.before_request
 def add_discount_and_money_to_session():
     if not "discount" in session:
@@ -27,8 +26,12 @@ def shop():
 
 @app.route('/shop/<item_id>', methods=['GET', 'POST'])
 def item_description(item_id):
-    return description_page(item_id, request, db)
+    if request.method == 'GET':
+        return description_page(item_id, request, db)
+    if request.method == 'POST':
+        return add_to_cart(item_id, request, db)
 
 @app.route('/cart', methods=['GET', 'POST'])
 def cart():
     return cart_page(request, db)
+
