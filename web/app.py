@@ -5,6 +5,7 @@ from . import db
 from .models import Items
 from .api.shopapi import *
 from .api.cartapi import *
+from .api.discountandcouponapi import *
 
 app = create_app()
 
@@ -19,6 +20,10 @@ def add_discount_and_money_to_session():
 def home():
     response = make_response(render_template('home.html'))
     return response
+
+@app.route('/submit_feedback', methods=['POST'])
+def feedback():
+    return submit_feedback(request, db)
 
 @app.route('/shop', methods=['GET'])
 def shop():

@@ -12,5 +12,12 @@
     <p>For this one and only 17/5 sale, we will discount allll the things for you to buy!</p>
     <p>Enjoyyy!!!!</p>
 
-    <a href="/shop">Shop</a>
+    <a href="/shop"><h2>Shop</h2></a>
+
+    <h2>Leave Feedback:</h2>
+    <form action="{{ url_for('feedback') }}" method="post">
+        <label for="feedback">Your Feedback:</label>
+        <textarea id="feedback" name="feedback" rows="4" cols="50" required></textarea>
+        <button type="submit">Submit Feedback</button>
+    </form>
 </html>
