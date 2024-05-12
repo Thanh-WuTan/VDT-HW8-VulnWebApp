@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    
+    <p>Your Balance: ${{ user_balance }}</p>
+
+    <h2>Items in Cart:</h2>
+    <ul>
+        {% for item in cart_items  %}
+            <li>
+                {{ item[0] }}: {{ item[1] }}
+                
+            </li>
+        {% endfor %}
+    </ul>
+
+    <p>Total: ${{ total_price }}</p>
+    <p>Checkout</p>
+
+    <p><a href="{{ url_for('home') }}">Back to Home</a></p>
+</body>
+</html>

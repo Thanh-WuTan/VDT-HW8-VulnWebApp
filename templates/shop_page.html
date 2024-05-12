@@ -8,6 +8,16 @@
 </head>
 <body>
     <h1>Shop</h1>
+
+    <div>
+        <a href="{{ url_for('cart') }}">
+            <i class="fa fa-shopping-cart" style="font-size:24px;"></i>
+        </a>
+      
+        <p>Your balance: ${{ user_balance }}</p>
+    </div>
+
+
     <h2>Items:</h2>
     <ul>
 

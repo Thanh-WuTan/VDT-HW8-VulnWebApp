@@ -7,8 +7,16 @@
     <title>{{ item[1] }}</title>
 </head>
 <body>
-    <h1>{{ item[1] }} description</h1>
+    <h1>{{ item[1] }} </h1>
     
+    <div>
+        <a href="{{ url_for('cart') }}">
+            <i class="fa fa-shopping-cart" style="font-size:24px;"></i>
+        </a>
+        
+        <p>Your balance: ${{ user_balance }}</p>
+    </div>
+
     <p>{{ item[2] }}</p>
     <p>Price: ${{ item[3] }}</p> 
 
