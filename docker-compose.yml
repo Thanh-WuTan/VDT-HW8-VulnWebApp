@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  app:
+    container_name: vdt-hw-vulnwebapp
+    image: vulnweb:latest
+    ports:
+      - "5000:5000"
+    restart: always
+    volumes:
+      - .:/app

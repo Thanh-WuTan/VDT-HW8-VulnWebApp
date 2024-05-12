@@ -18,3 +18,4 @@ def shop():
 @app.route('/shop/<item_id>', methods=['GET', 'POST'])
 def item_description(item_id):
     return description_page(item_id, request, db)
+
