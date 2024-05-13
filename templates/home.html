@@ -14,10 +14,18 @@
 
     <a href="/shop"><h2>Shop</h2></a>
 
+    <form action="{{ url_for('submit_coupon') }}" method="post">
+        <h2 for="coupon">Redeem Coupon:</h2>
+        <input type="text" id="coupon" name="coupon" required>
+        <button type="submit">Redeem</button>
+    </form>
+    
     <h2>Leave Feedback:</h2>
     <form action="{{ url_for('feedback') }}" method="post">
         <label for="feedback">Your Feedback:</label>
         <textarea id="feedback" name="feedback" rows="4" cols="50" required></textarea>
         <button type="submit">Submit Feedback</button>
     </form>
+
+
 </html>

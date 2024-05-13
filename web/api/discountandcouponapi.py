@@ -1,8 +1,16 @@
 from flask import render_template, make_response, redirect, url_for
 from sqlalchemy import text
 from flask import session 
-from .cartapi import cart_page
+import random
 
+
+def get_coupon():
+    if not "coupon" in session:
+        session["coupon"] = set()
+    alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    coupon = ''.join(random.choice(alphabet) for i in range(10))
+    session["coupon"].add(coupon)
+    return coupon
 
 def submit_feedback(request, db):
     feedback = request.form.get('feedback')
@@ -28,3 +36,21 @@ def remove_discount(request, db):
     if 'THANKYOU' in session['discount']:
         session['discount'].remove('THANKYOU')
     return redirect(url_for('cart'))
+
+def make_submit_coupon_request(request, db):
+    if not "coupon" in session:
+        response = make_response("Bad request")
+        return response
+    coupon = request.form.get('coupon')
+    if not coupon:
+        response = make_response("Invalid coupon")
+        return response
+    if coupon not in session["coupon"]:
+        response = make_response("Invalid coupon")
+        return response
+    user_balance = int(session["balance"])
+    new_balance = user_balance + 100
+    response = make_response("You have successfully used the coupon.")
+    session["balance"] = new_balance
+    session["coupon"].remove(coupon)
+    return response

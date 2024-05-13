@@ -49,3 +49,11 @@ def decrase_quantity_of_item_in_cart(item_id):
 @app.route('/remove_discount', methods=['POST'])
 def remove_thankyou_discount():
     return remove_discount(request, db)
+
+@app.route('/checkout', methods = ['GET'])
+def checkout():
+    return make_checkout(request, db)
+
+@app.route('/submit_coupon', methods = ['POST'])
+def submit_coupon():
+    return make_submit_coupon_request(request, db)

@@ -36,7 +36,11 @@
         </form>
     {% endif %}
     <p>Total: ${{ total_price }}</p>
-    <p>Checkout</p>
+
+    <form action="{{ url_for('checkout') }}" method="GET">
+        <p>Total: ${{ total }}</p>
+        <button type="submit">Checkout</button>
+    </form>
 
     <p><a href="/shop">Back to Shop</a></p>
 </body>
