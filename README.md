@@ -26,6 +26,6 @@ docker build -t vulnwebapp .
 docker-compose up --build -d
 ```
 
-Access the web application at localhost:5000 in your web browser.
+Access the web application at `localhost:5000` in your web browser.
 
 
