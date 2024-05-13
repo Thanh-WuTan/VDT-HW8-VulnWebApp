@@ -38,8 +38,14 @@ def item_description(item_id):
 
 @app.route('/cart', methods=['GET', 'POST'])
 def cart():
-    return cart_page(request, db)
-
+    if request.method == 'GET':
+        return cart_page(request, db)
+    else:
+        return use_discount(request, db)
 @app.route('/decrease_quantity/<item_id>', methods=['POST'])
 def decrase_quantity_of_item_in_cart(item_id):
     return decrease_quantity(item_id, request, db)
+
+@app.route('/remove_discount', methods=['POST'])
+def remove_thankyou_discount():
+    return remove_discount(request, db)

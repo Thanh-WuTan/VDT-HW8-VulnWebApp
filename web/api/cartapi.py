@@ -20,7 +20,11 @@ def cart_page(request, db):
         if item_count > 0:
             total_price += item_price * item_count
             cart_items.append((item_id, item_name, item_count))
-    return render_template('cart.html', user_balance=user_balance, total_price=total_price, cart_items=cart_items)
+    discount_message = None
+    if 'THANKYOU' in session['discount']:
+        total_price=total_price - total_price // 10
+        discount_message='applied THANKYOU -10% total price'
+    return render_template('cart.html', user_balance=user_balance, total_price=total_price, cart_items=cart_items, discount_message=discount_message)
 
 def decrease_quantity(item_id, request, db):
     try:
